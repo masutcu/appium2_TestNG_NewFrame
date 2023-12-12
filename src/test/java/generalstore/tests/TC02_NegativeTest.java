@@ -1,5 +1,6 @@
 package generalstore.tests;
 
+import generalstore.pages.FormPage;
 import io.appium.java_client.AppiumBy;
 
 import org.testng.annotations.Test;
@@ -15,11 +16,13 @@ public class TC02_NegativeTest {
         Hata mesajını doğrula (Toast Message)
      */
     @Test
-    public void testGenaralStoreNegativeTest() {
+    public void test02_NegativeTest() {
 
-        //driver.findElement(AppiumBy.id("com.androidsample.generalstore:id/btnLetsShop")).click();
-        //String toastMessage = driver.findElement(AppiumBy.xpath("//android.widget.Toast")).getAttribute("name");
-        //Assert.assertEquals(toastMessage, "Please enter your name");
+        FormPage page=new FormPage();
+        page.letsShopButtonClick();
+        page.hataMesajiGorundugunuDogrula("Please enter your nam");
+
+
     }
 
 }

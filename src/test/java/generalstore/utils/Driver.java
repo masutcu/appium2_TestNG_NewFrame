@@ -38,5 +38,14 @@ public class Driver {
 
     }
 
+    public static void driverClose(){
+        //bunu yapmasak çalışan diğer test bir öncekinin kaldığı yerden devam eder.
+        if(driver!=null){
+        driver.quit();
+        driver=null;
+        }
+
+    }
+
 
 }

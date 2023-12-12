@@ -1,6 +1,7 @@
 package generalstore.pages;
 
 import generalstore.utils.Driver;
+import generalstore.utils.ReusableMethods;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -12,7 +13,7 @@ import java.util.List;
 
 import static generalstore.utils.Driver.driver;
 
-public class CartPage {
+public class CartPage extends ReusableMethods {
     public CartPage() {
         PageFactory.initElements(new AppiumFieldDecorator(Driver.getDriver()), this);
     }
@@ -50,8 +51,10 @@ public class CartPage {
         checkBox.click();
     }
 
-    public void satinAlmaButonunaTikla(){
+    public void satinAlmaButonunaTikla() throws InterruptedException {
         satinAlmaButonu.click();
+        bekle(5);
+        driver.context("WEBVIEW_com.androidsample.generalstore");
     }
 
 

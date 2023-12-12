@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test  name="SmokeTest1">
+        <classes>
+            <class name="generalstore.tests.TC01_PozitiveTest">
+                <methods>
+                    <exclude name="test01PositiveTest"/> <!--paket içinde hariç bırakılacak test-->
+                </methods>
+            </class>
+            <class name="generalstore.tests.TC02_NegativeTest">
+                <methods>
+                    <include name="test02_NegativeTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
