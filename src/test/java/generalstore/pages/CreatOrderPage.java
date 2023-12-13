@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import static generalstore.utils.Driver.driver;
+import static generalstore.utils.ExtentReport.bilgiNotu;
 
 public class CreatOrderPage {
     public CreatOrderPage() {
@@ -21,9 +22,11 @@ public class CreatOrderPage {
 
     public void aramaMotorundaAra(String metin){
         aramaMotoru.sendKeys(metin, Keys.ENTER);
+        bilgiNotu("Arama motorunda "+ metin +" arandı");
     }
     public void uygulamayaGeriDon(){
         driver.pressKey(new KeyEvent(AndroidKey.BACK));
         driver.context("NATIVE_APP");
+        bilgiNotu("Native uygulamaya geri dönüldü");
     }
 }

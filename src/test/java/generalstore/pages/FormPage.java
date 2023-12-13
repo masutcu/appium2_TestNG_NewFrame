@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import static generalstore.utils.Driver.driver;
+import static generalstore.utils.ExtentReport.bilgiNotu;
 
 public class FormPage {
 
@@ -43,10 +44,12 @@ public class FormPage {
         ulkeMenusu.click();
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+ulke+"\"))"));
         driver.findElement(AppiumBy.xpath("//android.widget.TextView[@text=\""+ulke+"\"]")).click();
+        bilgiNotu("Ülke menüsünden "+ulke+" seçildi");
     }
 
     public  void isimGir(String isim){
         isimAlani.sendKeys(isim);
+        bilgiNotu("isim bölümüne "+isim+" seçildi");
     }
 
     public void cinsiyetSec(String cinsiyet){
@@ -56,18 +59,23 @@ public class FormPage {
             cinsiyetFemale.click();
         }else System.out.println("cinsiyet tanımlamanız yanlış");
 
+        bilgiNotu("Cinsiyet checkBox  "+cinsiyet+" seçildi");
+
     }
 
     public void letsShopButtonClick(){
         letsShopButton.click();
+        bilgiNotu("LetsShop Button Tıklandı");
     }
 
     public  void  sayfaBasliginiDogrula(String baslik){
         Assert.assertEquals(sayfaBasligi.getText(), baslik);
+        bilgiNotu("Sayfa başlığı doğrulaması yapıldı");
     }
 
     public  void  hataMesajiGorundugunuDogrula(String mesaj){
         Assert.assertEquals(hataMesaji.getAttribute("name"), mesaj);
+        bilgiNotu("Hata mesajının içeriği ve görünürlüğü doğrulandı");
     }
 
 

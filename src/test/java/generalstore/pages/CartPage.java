@@ -12,6 +12,7 @@ import org.testng.Assert;
 import java.util.List;
 
 import static generalstore.utils.Driver.driver;
+import static generalstore.utils.ExtentReport.bilgiNotu;
 
 public class CartPage extends ReusableMethods {
     public CartPage() {
@@ -31,6 +32,7 @@ public class CartPage extends ReusableMethods {
 
     public void secilenUrunAdediniDogrula(int urunAdet){
         Assert.assertEquals(urunler.size(), urunAdet);
+        bilgiNotu("Seçilen ürün adedi "+urunAdet+" olarak doğrulandı");
     }
 
     public void secilenUrunlerinToplamFiyatiniDogrula(){
@@ -45,16 +47,19 @@ public class CartPage extends ReusableMethods {
         double totalAmount = Double.parseDouble(toplamFiyat.getText().substring(1));
         System.out.println("toplam fiyat : "+totalAmount);
         Assert.assertEquals(total, totalAmount);
+        bilgiNotu("Seçilen ürünlerin toplam fiyetları : "+totalAmount+" olarak doğrulandı");
     }
 
     public void kontrolKutusunaTikla(){
         checkBox.click();
+        bilgiNotu("Kontrol kutusu tıklandı");
     }
 
     public void satinAlmaButonunaTikla() throws InterruptedException {
         satinAlmaButonu.click();
         bekle(5);
         driver.context("WEBVIEW_com.androidsample.generalstore");
+        bilgiNotu("Satın Alma butonu tıklandı");
     }
 
 

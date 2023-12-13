@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 import static generalstore.utils.Driver.driver;
+import static generalstore.utils.ExtentReport.bilgiNotu;
 
 public class CatalogPage {
     public CatalogPage() {
@@ -25,10 +26,12 @@ public class CatalogPage {
     public void sepeteUrunEkle(String urun, int index){
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+urun+"\"))"));
         addToCart.get(index).click();
+        bilgiNotu("Sepete ürün eklendi");
     }
 
     public void sepeteGit(){
         sepeteGit.click();
+        bilgiNotu("Sepete gidildi");
     }
 
 

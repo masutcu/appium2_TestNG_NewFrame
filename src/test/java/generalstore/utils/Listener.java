@@ -17,16 +17,19 @@ import static generalstore.utils.ExtentReport.*;
 
 public class Listener implements ITestListener {
     //burada implement çok önemlidir. ITestLissenerdaki methodları kullanmamız lazım. on -dersen intelij metodları getirir.
-
+    //@Before @after yerine listener kullanarak
+    //onTesFailure veya onTestSucsess gibi methodları kullanabildik.
     @Override
     public void onStart(ITestContext context) {
         raporOlustur();
+
     }
 
     @Override
     public void onTestStart(ITestResult result) {
         //String testName = result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Test.class).testName();//test adında annotation varsa, anotationa ait test değerini ekler
         testOlustur(result.getMethod().getMethodName()); //testin adını panele başlık olarak ekleyecek
+        test.info("Test Başladı");
     }
 
     @Override
@@ -37,7 +40,7 @@ public class Listener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
 
-        test.fail(result.getThrowable().getMessage());//hata mesajını eklemiş oluyoruz
+        test.fail("Test Fail oldu çünkü : "+result.getThrowable().getMessage());//hata mesajını eklemiş oluyoruz
 
         //Ekran görüntüsünü alma
         File dosya= driver.getScreenshotAs(OutputType.FILE);
@@ -63,6 +66,7 @@ public class Listener implements ITestListener {
 
     @Override
     public void onFinish(ITestContext context) {
+        driverClose();
         raporuKaydet();
     }
 }
