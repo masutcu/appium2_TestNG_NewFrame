@@ -5,6 +5,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import java.io.File;
+import java.io.IOException;
 
 public class ExtentReport {
 
@@ -37,4 +38,23 @@ public class ExtentReport {
     public static void raporuKaydet(){
         extent.flush();
     }
-}
+
+    public static void raporuAc(){
+        // Rapor dosyasının tam yolu
+        String raporYolu = "C:\\Users\\Lenovo\\IdeaProjects\\Appium_ProjectTestNG\\raporlar\\rapor.html";
+
+        try {
+            // Google Chrome'un çalıştırılması
+            String chromePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
+            String command = chromePath + " " + raporYolu;
+            Process process = Runtime.getRuntime().exec(command);
+
+            // İşlemi bekleyin
+            process.waitFor();
+
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    }
+

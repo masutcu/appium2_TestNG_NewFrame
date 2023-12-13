@@ -69,5 +69,6 @@ public class Listener implements ITestListener {
         driverClose();
         raporuKaydet();
         serverKapat();
+        raporuAc();
     }
 }
