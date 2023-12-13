@@ -11,8 +11,7 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.io.IOException;
 
-import static generalstore.utils.Driver.driver;
-import static generalstore.utils.Driver.driverClose;
+import static generalstore.utils.Driver.*;
 import static generalstore.utils.ExtentReport.*;
 
 public class Listener implements ITestListener {
@@ -21,6 +20,7 @@ public class Listener implements ITestListener {
     //onTesFailure veya onTestSucsess gibi methodları kullanabildik.
     @Override
     public void onStart(ITestContext context) {
+        serverBaslat(ConfigReader.getProperty("localHost"),Integer.parseInt(ConfigReader.getProperty("localPort")));
         raporOlustur();
 
     }
@@ -68,5 +68,6 @@ public class Listener implements ITestListener {
     public void onFinish(ITestContext context) {
         driverClose();
         raporuKaydet();
+        serverKapat();
     }
 }

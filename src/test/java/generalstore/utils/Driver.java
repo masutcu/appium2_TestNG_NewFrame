@@ -2,6 +2,8 @@ package generalstore.utils;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
 
 
 import java.io.File;
@@ -11,6 +13,7 @@ import java.time.Duration;
 
 public class Driver {
     public static AndroidDriver driver;
+    public static AppiumDriverLocalService service;
 
 
     public static AndroidDriver getDriver()  {
@@ -38,6 +41,19 @@ public class Driver {
 
     }
 
+    public static void serverBaslat(String ipAdres, int port){
+        service=new AppiumServiceBuilder()
+                .withAppiumJS(new File("C:\\Users\\Lenovo\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))
+                .withIPAddress(ipAdres)
+                .usingPort(port)
+                .build();
+        service.start();
+    }
+
+    public static void serverKapat(){
+        service.stop();
+
+    }
     public static void driverClose(){
         //bunu yapmasak çalışan diğer test bir öncekinin kaldığı yerden devam eder.
         if(driver!=null){
@@ -46,6 +62,7 @@ public class Driver {
         }
 
     }
+
 
 
 }
