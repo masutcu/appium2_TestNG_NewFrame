@@ -18,7 +18,7 @@ public class TC01_PozitiveTest {
     public void test01PositiveTest() throws InterruptedException {
 
         FormPage page=new FormPage();
-        page.ulkeSec("Austria");
+        page.ulkeSec("Lithuania");
         page.isimGir("Safinaz");
         page.cinsiyetSec("female");
         page.letsShopButtonClick();

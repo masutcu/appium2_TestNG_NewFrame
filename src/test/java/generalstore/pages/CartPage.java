@@ -57,9 +57,12 @@ public class CartPage extends ReusableMethods {
 
     public void satinAlmaButonunaTikla() throws InterruptedException {
         satinAlmaButonu.click();
-        bekle(5);
-        driver.context("WEBVIEW_com.androidsample.generalstore");
         bilgiNotu("Satın Alma butonu tıklandı");
+
+        bekle(5);
+
+        driver.context("WEBVIEW_com.androidsample.generalstore");
+        bilgiNotu("Native alandan Web alanına geçiş yapıldı");
     }
 
 

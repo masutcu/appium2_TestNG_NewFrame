@@ -18,19 +18,22 @@ public class Listener implements ITestListener {
     //burada implement çok önemlidir. ITestLissenerdaki methodları kullanmamız lazım. on -dersen intelij metodları getirir.
     //@Before @after yerine listener kullanarak
     //onTesFailure veya onTestSucsess gibi methodları kullanabildik.
-    @Override
+    @Override //testler başladığında bir defa
     public void onStart(ITestContext context) {
         serverBaslat(ConfigReader.getProperty("localHost"),Integer.parseInt(ConfigReader.getProperty("localPort")));
         raporOlustur();
 
     }
 
-    @Override
+    @Override //her test başladığında
     public void onTestStart(ITestResult result) {
         //String testName = result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(Test.class).testName();//test adında annotation varsa, anotationa ait test değerini ekler
         testOlustur(result.getMethod().getMethodName()); //testin adını panele başlık olarak ekleyecek
         test.info("Test Başladı");
+
     }
+
+
 
     @Override
     public void onTestSuccess(ITestResult result) {
@@ -70,5 +73,6 @@ public class Listener implements ITestListener {
         raporuKaydet();
         serverKapat();
         raporuAc();
+        //muzikAc();
     }
 }

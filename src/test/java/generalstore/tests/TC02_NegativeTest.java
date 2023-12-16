@@ -5,6 +5,8 @@ import io.appium.java_client.AppiumBy;
 
 import org.testng.annotations.Test;
 
+import static generalstore.utils.ExtentReport.test;
+
 public class TC02_NegativeTest {
 
     /*
@@ -20,7 +22,8 @@ public class TC02_NegativeTest {
 
         FormPage page=new FormPage();
         page.letsShopButtonClick();
-        page.hataMesajiGorundugunuDogrula("Please enter your nam");
+        //test.skip("Eğer Captcha gibi sebeplerle atlanan alan varsa, bu alana ilişkin rapor notu");
+        page.hataMesajiGorundugunuDogrula("Please enter your name");
 
 
     }

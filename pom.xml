@@ -40,8 +40,23 @@
             <version>2.15.1</version>
         </dependency>
 
-
-
     </dependencies>
+    <!-- maven jenkins için eklenen plugin-->
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.2.3</version>
+                    <configuration>
+                        <suiteXmlFiles>
+                            <suiteXmlFile>testngPackage.xml</suiteXmlFile> <!-- çalıştırılacak dosya adı-->
+                        </suiteXmlFiles>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
